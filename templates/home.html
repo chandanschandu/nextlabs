@@ -1,0 +1,152 @@
+{% load static %} 
+<link rel="stylesheet" href="{% static 'style.css' %}"> 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #dee6ec;
+        }
+
+        .container {
+            height: 100vh;
+        }
+
+        .app-card {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .app-card img {
+            width: 90px;
+            height: 90px;
+            margin-right: 15px;
+        }
+
+        .app-card h2 {
+            margin: 0;
+            font-size: 18px; /* Reduced font size */
+            flex-grow: 1;
+        }
+
+        .app-card a {
+            color: #007bff;
+        }
+
+        .app-card button {
+            background-color: #28a745;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .app-card:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .app-card {
+                width: 100%;
+                margin-bottom: 20px;
+                padding: 10px;
+            }
+
+            .app-card img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .app-card h2 {
+                font-size: 16px;
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container vh-100 d-flex flex-column" style="background-color:#dee6ec">
+        <!-- Header -->
+        <div class="bg-light mb-5 py-3 text-center">
+            <h1>Hello, {{ user.first_name }}</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-3 bg-light p-5">
+                <div class="row">
+                    <a class="m-3 btn btn-primary btn-outline-light btn-lg" href="home">Home</a>
+                </div>
+                <div class="row">
+                    <a class="m-3 btn btn-primary btn-outline-light btn-lg" href="profile">Profile</a>
+                </div>
+                <div class="row">
+                    <a class="m-3 btn btn-primary btn-outline-light btn-lg" href="points">Points</a>
+                </div>
+                <div class="row">
+                    <a class="m-3 btn btn-primary btn-outline-light btn-lg" href="task">Task</a>
+                </div>
+                <div class="row">
+                    <a class="m-3 btn btn-primary btn-outline-light btn-lg" href="logout">Logout</a>
+                </div>
+            </div>
+
+            <div class="col bg-light p-5">
+                {% for app in apps %}
+                <div class="app-card fade-in">
+                    <img src="{{app.app_icon.url}}" alt="">
+                    <div>
+                        <h2>{{app.app_name}}</h2>
+                        <a href="{% url 'app' id=app.id %}">View in Detail &gt;</a>
+                    </div>
+                    <button>{{app.points}} &nbsp; POINTS</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

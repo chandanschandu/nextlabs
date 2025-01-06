@@ -1,0 +1,99 @@
+{% load static %} <!-- Load Django static files -->
+<link rel="stylesheet" href="{% static 'style.css' %}"> <!-- Link to your CSS -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background-color: #f8f9fa;
+        }
+
+        h3 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        h4 {
+            margin-bottom: 15px;
+        }
+
+        .user-info {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-primary {
+            color: #007bff !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container vh-100 d-flex flex-column" style="background-color:#dee6ec">
+        <!-- Header -->
+        <div class="bg-light mb-5 py-3 text-center">
+            <h1>Hello, {{ user.first_name }}</h1>
+        </div>
+        
+        <div class="row">
+            
+            <div class="col-3 bg-light p-5">
+                <div class="row">
+                    <a class="m-3 btn btn-primary btn-outline-light btn-lg" href="{% url 'home' %}">Home</a>
+                </div>
+                <div class="row">
+                    <a class="m-3 btn btn-primary btn-outline-light btn-lg" href="{% url 'profile' %}">Profile</a>
+                </div>
+                <div class="row">
+                    <a class="m-3 btn btn-primary btn-outline-light btn-lg" href="{% url 'points' %}">Points</a>
+                </div>
+                <div class="row">
+                    <a class="m-3 btn btn-primary btn-outline-light btn-lg" href="{% url 'task' %}">Task</a>
+                </div>
+                <div class="row">
+                    <a class="m-3 btn btn-primary btn-outline-light btn-lg" href="{% url 'logout' %}">Logout</a>
+                </div>
+            </div>
+
+            <div class="col bg-light p-5">
+                <div class="container" style="background-color:#dee6ec">
+                    <div class="row">
+                        <div class="col">
+                            <h3>Profile</h3>
+                            <br>
+                            {% for app_name in app_names %}
+                                <h4>{{ app_name }}</h4>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="user-info">
+                                <h4>First Name: <span class="text-primary">{{ user.first_name }}</span></h4>
+                                <h4>Last Name: <span class="text-primary">{{ user.last_name }}</span></h4>
+                                <h4>Username: <span class="text-primary">{{ user.username }}</span></h4>
+                                <h4>Email: <span class="text-primary">{{ user.email }}</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

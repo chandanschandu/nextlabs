@@ -1,0 +1,113 @@
+.file-droppable {
+    background: #d9d5ec;
+    border: dashed 2px #5b537d;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 1s;
+    min-height: 200px;
+    position: relative;
+  }
+  
+  .file-droppable.filled {
+    background: #c5dfdc;
+    border: solid 2px #6faca5;
+    border-radius: 5px;
+  }
+  
+  .file-droppable:after {
+    position: absolute;
+    left: 13px;
+    top: 38px;
+    font-size: 10px;
+    font-weight: bold;
+  }
+  
+  .file-droppable::before {
+    content: " ";
+    display: inline-block;
+    /* height: 100%; */
+    width: 1%;
+    vertical-align: middle;
+  }
+  
+  .file-droppable div {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px;
+    overflow: hidden;
+    word-break: break-all;
+  }
+  
+  .file-droppable span {
+    position: absolute;
+    font-weight: bold;
+    right: 5px;
+    top: -5px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+    display: none;
+  }
+  
+  .file-droppable input {
+    position: absolute;
+    z-index: 3;
+    display: block;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
+  
+  /* General Styles for Sidebar */
+.col-3 {
+  background-color: #f8f9fa; /* Light background */
+  padding: 20px;
+  border-right: 2px solid #dee2e6; /* Subtle divider */
+  height: 100vh; /* Full viewport height */
+}
+
+/* Style for Links (Buttons) */
+.col-3 .btn {
+  width: 100%; /* Full width buttons */
+  text-align: center; /* Center text */
+  border-radius: 4px; /* Rounded corners */
+  font-weight: bold; /* Bold text */
+  font-size: 14px; /* Reduced font size */
+  padding: 10px; /* Reduced padding */
+  margin-bottom: 3px; /* Reduced space between buttons */
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth hover effect */
+  background-color: #ffffff; /* Default button background */
+  border: 1px solid #dee2e6; /* Blue border */
+  color: #0d6efd; /* Blue text */
+}
+
+/* Hover Effect for Buttons */
+.col-3 .btn:hover {
+  background-color: #0d6efd; /* Blue background */
+  color: #ffffff; /* White text */
+  border-color: #0d6efd; /* Blue border */
+}
+
+/* Spacing for Rows */
+.col-3 .row {
+  margin-bottom: 3px; /* Reduced space between rows */
+}
+
+/* Highlight the Active Button (Optional) */
+.col-3 .btn.active {
+  background-color: #0d6efd; /* Highlight color */
+  color: #ffffff; /* White text */
+  border-color: #0d6efd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .col-3 {
+      height: auto; /* Adjust height for smaller screens */
+      border-right: none; /* Remove border */
+  }
+  .col-3 .btn {
+      font-size: 12px; /* Smaller font size for smaller screens */
+  }
+}
